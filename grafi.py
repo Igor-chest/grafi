@@ -50,9 +50,15 @@ def deleting_a_node(x, tree, unic):
             tree[i][j] = 0
             if 1 in tree[j]:
                 deleting_a_node(unic[j], tree, unic)
-            
 
-deleting_a_node(4, tree, unic)
+def new(parent, son):
+    if son not in unic:
+	dicUnic[son] = len(unic)
+	unic.append(son)
+	for i in tree:
+	    i.append(0)
+	tree.append([ 0 for j in range(len(unic))])
+    tree[dicUnic[parent]][dicUnic[son]] = 1
 
 for i in range(len(tree)): 
     for j in range(len(tree)): 
