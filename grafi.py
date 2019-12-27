@@ -38,3 +38,23 @@ for i in range(len(tree)):
     for j in range(len(tree)): 
         print(tree[i][j], end=' ')
     print('')
+
+print('_______________')
+
+def deleting_a_node(x, tree, unic):
+    for i in range(len(unic)):
+        if unic[i] == x:
+            break
+    for j in range(len(tree[i])):
+        if tree[i][j] == 1:
+            tree[i][j] = 0
+            if 1 in tree[j]:
+                deleting_a_node(unic[j], tree, unic)
+            
+
+deleting_a_node(4, tree, unic)
+
+for i in range(len(tree)): 
+    for j in range(len(tree)): 
+        print(tree[i][j], end=' ')
+    print('')
