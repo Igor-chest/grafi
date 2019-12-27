@@ -60,6 +60,21 @@ def new(parent, son):
 	tree.append([ 0 for j in range(len(unic))])
     tree[dicUnic[parent]][dicUnic[son]] = 1
 
+
+# прямой обход
+dad = unic[0]
+def straight(tree, unic, x):
+    if x == dad:
+        print(x)
+    for i in range(len(unic)):
+        if unic[i] == x:
+            break
+    for j in range(len(tree)):
+        if tree[i][j] == 1:
+            print(unic[j])
+            if 1 in tree[j]:
+                straight(tree, unic, unic[j])
+
 for i in range(len(tree)): 
     for j in range(len(tree)): 
         print(tree[i][j], end=' ')
