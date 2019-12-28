@@ -62,6 +62,7 @@ def new(parent, son):
 
 
 # прямой обход
+
 dad = unic[0]
 def straight(tree, unic, x):
     if x == dad:
@@ -74,6 +75,25 @@ def straight(tree, unic, x):
             print(unic[j])
             if 1 in tree[j]:
                 straight(tree, unic, unic[j])
+		
+
+# концевой обход
+
+def end(tree, unic, x):
+    for i in range(len(unic)):
+        if unic[i] == x:
+            break
+    if 1 in tree[i]:
+        for j in range(len(tree)):
+            if tree[i][j] == 1:
+                break
+        end(tree, unic, unic[j]) 
+    else:
+        print(x)
+        for j in range(len(tree)):
+            if tree[j][i] == 1:
+                tree [j][i] = 0
+                end(tree, unic, unic[j])
 
 for i in range(len(tree)): 
     for j in range(len(tree)): 
