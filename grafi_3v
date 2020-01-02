@@ -68,6 +68,22 @@ def straight(x):
         print(a[i])
         if a[i] in tree:
             straight(a[i])
+	    
+
+# обратный ход
+
+def reverse(x):
+    a = tree.get(x)
+    for i in range(len(a)):
+        if a[i] not in tree:
+            print(a[i])
+            if i == 0:
+                print(x)
+        else:
+            reverse(a[i])
+            if tree.get(first)[0] == a[i]:   # этот кусок кода нужен, чтобы в нужном месте выводить first'a
+                print(first)
+
 
 # концевой обход
 
