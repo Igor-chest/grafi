@@ -56,3 +56,27 @@ def way(el, first): #возврощает false, если не найден.firs
                 if step(i, depth+1, el):
                     return True
         return False
+	
+	
+# прямой ход
+
+def straight(x):
+    if x == first:
+        print(x)
+    a = tree.get(x)
+    for i in range(len(a)):
+        print(a[i])
+        if a[i] in tree:
+            straight(a[i])
+
+# концевой обход
+
+def end(x):
+    a = tree.get(x)
+    for i in range(len(a)):
+        if a[i] in tree:
+            end(a[i])
+        print(a[i])
+        if a[i] == tree.get(first)[len(tree.get(first)) - 1]:  # довольно мутно тут получилось, но в двух словах здесь
+            print(first)                                       # проверяется: если вывелся самый правый сын first'а,
+                                                               # то он выводит следом сразу first
