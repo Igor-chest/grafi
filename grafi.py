@@ -95,6 +95,36 @@ def end(tree, unic, x):
                 tree [j][i] = 0
                 end(tree, unic, unic[j])
 
+# обратный ход
+def reverse(elNum):   #first reverse(0))
+    for i in range(len(tree)):
+	if tree[elNum][i]:
+	    reverse(i)
+    print(unic[elNum])
+
+
+#поиск
+def way(el): #возврощает false, если не найден
+    if el not in unic:
+	return False
+    depth=0
+    cWay=[ -1 for j in range(len(tree))]
+
+    def step(pos, depth, el):
+	cWay[depth]=unic[pos]
+	if unic[pos]==el:
+	    for i in range(depth):
+		print(cWay[i])
+	    print(el)
+	    return True
+	for i in range(len(tree)):
+	    if tree[pos][i]:
+		if step(i,depth+1,el):
+		    return True
+	return False
+
+    return step(0, 0, el)
+
 for i in range(len(tree)): 
     for j in range(len(tree)): 
         print(tree[i][j], end=' ')
