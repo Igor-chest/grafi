@@ -1,8 +1,0 @@
-def count():
-    with open("input.txt", "r") as f:
-        a = []
-        for i in f.read().split('\n'):
-            a += i.split()
-    print(len(set(a)))
-
-count()
