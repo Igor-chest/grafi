@@ -1,0 +1,58 @@
+def create():
+    tree = {}
+    first=''
+    f = open('input.txt','r')
+    for line in f:
+	main=''
+	num=''
+	for a in line:
+	    if a not in (' ','\n'):
+		num+=a
+	    elif not main:
+		if not first:
+		    first=num
+		main = int(num)
+		num=''
+		tree[main]=[]
+	    else:
+		tree[main].append(int(num))
+		num=''
+    f.close()
+    return tree, int(first)
+
+tree, first=create()
+
+def new(parent, son):
+    if parent in tree:
+	tree[parent].append(son)
+    else:
+	tree[parent]=[son]
+
+def delet(el):
+    if el in tree:
+	for i in tree[el]:
+	    delet(i)
+	for i in tree:
+	    if el in tree[i]:
+		tree[i].remove(el)
+		if not tree[i]:
+		    tree.pop(i,None)
+                break
+
+
+def way(el, first): #возврощает false, если не найден.first - главный элемент
+    depth=0
+    cWay=[ -1 for j in range(len(tree)+1)]
+
+    def step(pos, depth, el):
+	cWay[depth]=pos
+	if pos==el:
+	    for i in range(depth):
+		print(cWay[i])
+	    print(el)
+	    return True
+		if pos in tree:
+		    for i in tree[pos]:
+			if step(i, depth+1, el):
+			    return True
+	return False
