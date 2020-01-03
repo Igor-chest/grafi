@@ -97,10 +97,15 @@ def end(tree, unic, x):
 
 # обратный ход
 def reverse(elNum):   #first reverse(0))
+    flag = True
     for i in range(len(tree)):
 	if tree[elNum][i]:
 	    reverse(i)
-    print(unic[elNum])
+            if flag:
+                print(unic[elNum])
+                flag=False
+    if flag:
+        print(unic[elNum])
 
 
 #поиск
